@@ -1,0 +1,39 @@
+{
+  "name": "flysorter-back-end",
+  "version": "1.0.0",
+  "description": "BOM inventory manager back-end",
+  "main": "src/app.js",
+  "scripts": {
+    "artillery": "./node_modules/artillery/bin/artillery",
+    "start": "node src/app.js",
+    "test": "eslint . && jest --coverage --collectCoverageFrom=src/lib/*.js --collectCoverageFrom=src/routes/*.js --collectCoverageFrom=src/__test__/lib/*-mock.js --collectCoverageFrom=!src/lib/error-middleware.js --forceExit --runInBand",
+    "jestSF": "./node_modules/jest/bin/jest.js --coverage --forceExit --runInBand $1",
+    "justJest": "jest --coverage --forceExit --runInBand",
+    "justLint": "./node_modules/eslint/bin/eslint.js ./src/*.js",
+    "start-server": "./makesure.sh; node ./src/app.js",
+    "dbDevOn": "mkdir -p ./testdb && mongod --dbpath ./testdb",
+    "devDbOff": "./killDevDb.sh",
+    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbOff": "killall mongod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fncreative/FlySorter-back-end.git"
+  },
+  "author": "Daniel Frey, Tom North, Wyatt Pefley, Benjamin West",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fncreative/FlySorter-back-end/issues"
+  },
+  "homepage": "https://github.com/fncreative/FlySorter-back-end#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "logger": "0.0.1",
+    "mongoose": "^5.3.10",
+    "winston": "^3.1.0"
+  }
+}
