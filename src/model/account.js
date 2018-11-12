@@ -36,9 +36,9 @@ const accountSchema = mongoose.Schema({
     required: true,
   },
   isAdmin: {
-    type: boolean,
+    type: Boolean,
     required: true,
-  }
+  },
 });
 
 function pCreateToken() {
@@ -48,9 +48,9 @@ function pCreateToken() {
       return jsonWebToken.sign({
         tokenSeed: account.tokenSeed,
       }, process.env.SECRET);
-      })
+    })
     .catch((error) => {
-    throw error;
+      throw error;
     });
 }
 
@@ -74,7 +74,7 @@ const HASH_ROUNDS = 10;
 Account.create = (username, password, recoveryAnswer) => {
   return bcrypt.hash(password, HASH_ROUNDS)
     .then((passwordHash) => {
-      password = null;
+      password = null; //eslint-disable-line
       const tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
       return bcrypt.hash(recoveryAnswer, HASH_ROUNDS)
         .then((recoveryHash) => {
@@ -84,6 +84,6 @@ Account.create = (username, password, recoveryAnswer) => {
             passwordHash,
             recoveryHash,
           }).save();
-        })
+        });
     });
 };
