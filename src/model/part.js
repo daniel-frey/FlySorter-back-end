@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const partSchema = mongoose.Schema({
   partId: {
-    type: Number,
+    type: String,
     unique: true,
     required: true,
   },
@@ -23,19 +23,19 @@ const partSchema = mongoose.Schema({
     type: String,
   },
   partPrice: {
-    type: Number,
+    type: String,
     required: true,
   },
   partCategory: {
-    type: Number,
+    type: String,
     required: true,
   },
   partLocation: {
-    type: Number,
+    type: String,
     required: true,
   },
   partCount: {
-    type: Number,
+    type: String,
   },
   partLongLead: {
     type: Boolean,
@@ -44,3 +44,5 @@ const partSchema = mongoose.Schema({
     type: String,
   },
 });
+
+const Part = module.exports = mongoose.model('part', partSchema);

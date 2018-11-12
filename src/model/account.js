@@ -27,6 +27,14 @@ const accountSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  recoveryHash: {
+    type: String,
+    required: true,
+  },
+  recoveryQuestion: {
+    type: String,
+    required: true,
+  },
 });
 
 function pCreateToken() {
@@ -59,15 +67,19 @@ accountSchema.methods.pValidatePassword = pValidatePassword;
 const Account = module.exports = mongoose.model('account', accountSchema);
 const HASH_ROUNDS = 10;
 
-Account.create = (username, password) => {
+Account.create = (username, password, recoveryAnswer) => {
   return bcrypt.hash(password, HASH_ROUNDS)
     .then((passwordHash) => {
       password = null;
       const tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
-      return new Account({
-        username,
-        tokenSeed,
-        passwordHash,
-      }).save();
+      return bcrypt.hash(recoveryAnswer, HASH_ROUNDS)
+        .then((recoveryHash) => {
+          return new Account({
+            username,
+            tokenSeed,
+            passwordHash,
+            recoveryHash,
+          }).save();
+        })
     });
 };
