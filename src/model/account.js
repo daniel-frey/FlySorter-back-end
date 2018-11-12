@@ -35,6 +35,10 @@ const accountSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  isAdmin: {
+    type: boolean,
+    required: true,
+  }
 });
 
 function pCreateToken() {
