@@ -1,7 +1,6 @@
 'use strict';
 
 // !: = development note
-
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -11,7 +10,7 @@ const loggerMiddleware = require('./logger-middleware');
 // const errorMiddleware = require('./error-middleware');
 
 // const authAccountRoutes = require('../routes/auth-router');
-// const armRoutes = require('../routes/arm-route');
+// const armRoutes = require('../routes/arm-routes');
 
 const app = express();
 
@@ -25,7 +24,7 @@ app.use(loggerMiddleware);
 // app.use(authAccountRoutes);
 
 app.all('*', (request, response) => {
-  logger.log(logger.INFO, '404 - catch-all/default route (route was not found)');
+  logger.log(logger.INFO, '404 - catch-all/default routes (routes was not found)');
   return response.sendStatus(404);
 });
 

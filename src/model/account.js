@@ -76,6 +76,7 @@ Account.create = (username, password, recoveryAnswer) => {
     .then((passwordHash) => {
       password = null; //eslint-disable-line
       const tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
+      console.log('hello');
       return bcrypt.hash(recoveryAnswer, HASH_ROUNDS)
         .then((recoveryHash) => {
           return new Account({
