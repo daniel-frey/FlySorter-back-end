@@ -43,6 +43,12 @@ const partSchema = mongoose.Schema({
   partNotes: {
     type: String,
   },
+  // TOM: This connects the parts to the subAssembly
+  subAssembly: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'subAssembly',
+  },
 });
 
 const Part = module.exports = mongoose.model('part', partSchema);
