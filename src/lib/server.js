@@ -37,18 +37,18 @@ let internalServer = null;
 
 server.start = () => {
   return mongoose.connect(process.env.MONGODB_URI)
-      .then(() => {
+    .then(() => {
         return internalServer = app.listen(process.env.PORT, () => { // eslint-disable-line
-          logger.log(logger.INFO, `Server is on at PORT: ${process.env.PORT}`);
-        });
+        logger.log(logger.INFO, `Server is on at PORT: ${process.env.PORT}`);
       });
+    });
 };
 
 server.stop = () => {
   return mongoose.disconnect()
-      .then(() => {
-        return internalServer.close(() => {
-          logger.log(logger.INFO, 'The server is OFF.');
-        });
+    .then(() => {
+      return internalServer.close(() => {
+        logger.log(logger.INFO, 'The server is OFF.');
       });
+    });
 };
