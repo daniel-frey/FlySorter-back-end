@@ -31,7 +31,9 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "bcrypt": "^3.0.2",
     "cors": "^2.8.5",
+    "jsonwebtoken": "^8.3.0",
     "logger": "0.0.1",
     "mongoose": "^5.3.10",
     "winston": "^3.1.0"
