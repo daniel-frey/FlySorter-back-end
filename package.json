@@ -13,8 +13,8 @@
     "start-server": "./makesure.sh; node ./src/app.js",
     "dbDevOn": "mkdir -p ./testdb && mongod --dbpath ./testdb",
     "devDbOff": "./killDevDb.sh",
-    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
-    "dbOff": "killall mongod"
+    "dbon": "mkdir -p ./db && mongod --dbpath ./db",
+    "dboff": "killall mongod"
   },
   "repository": {
     "type": "git",

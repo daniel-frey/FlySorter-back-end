@@ -19,7 +19,6 @@ module.exports = (request, response, next) => {
   if (!request.headers.authorization) {
     return next(new HttpError(400, 'AUTH | invalid request'));
   }
-
   const token = request.headers.authorization.split('Bearer ')[1];
 
   if (!token) {
