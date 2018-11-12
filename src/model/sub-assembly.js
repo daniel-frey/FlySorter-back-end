@@ -21,7 +21,7 @@ const subAssemblySchema = mongoose.Schema({
   subMinutes: {
     type: String,
   },
-  // TOM: This connects the
+  // TOM: This connects the subAssembly to the Parts
   parts: [
     {
       type: mongoose.Schema.Types.ObjectId,
