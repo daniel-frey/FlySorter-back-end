@@ -5,7 +5,7 @@ const queryData = {};
 queryData.find = (Model, findOptions) => {
   const testQuery = Model.find({});
   // find option syntax is space delimited
-  // e.g. 'username accessCodeHash'
+  // e.g. 'username securityQuestion etc.'
   return testQuery.select(findOptions);
 };
 
@@ -22,8 +22,10 @@ queryData.query = (function (data, callback) {
     }
     // uncomment for debugging
     console.log(queryContainer);
-    // console.log(queryContainer['0'].username);
-    // console.log(queryContainer['1'].username);
+    // nameOfProperty is generic, your dataset will be unique depending on the query
+    // uncomment for debugging
+    // console.log(queryContainer['0'].nameOfProperty);
+    // console.log(queryContainer['1'].nameOfProperty);
     callback(queryContainer);
   });
 });
