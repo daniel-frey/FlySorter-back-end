@@ -47,7 +47,7 @@ function pCreateToken() {
     .then((account) => {
       return jsonWebToken.sign({
         tokenSeed: account.tokenSeed,
-      }, process.env.SECRET);
+      }, process.env.APP_SECRET);
     })
     .catch((error) => {
       throw error;
@@ -71,20 +71,29 @@ accountSchema.methods.pValidatePassword = pValidatePassword;
 const Account = module.exports = mongoose.model('account', accountSchema);
 const HASH_ROUNDS = 10;
 
-Account.create = (username, password, recoveryAnswer) => {
+function hashRecovery(recoveryAnswer, callback) {
+  const bcryptReturn = bcrypt.hashSync(recoveryAnswer, HASH_ROUNDS);
+  return callback(bcryptReturn);
+}
+
+function getRecoveryHash(recoveryHash) {
+  return recoveryHash;
+}
+
+Account.create = (username, password, recoveryQuestion, recoveryAnswer, isAdmin = false) => {
+  const recoveryHash = hashRecovery(recoveryAnswer, getRecoveryHash);
   return bcrypt.hash(password, HASH_ROUNDS)
     .then((passwordHash) => {
       password = null; //eslint-disable-line
+      recoveryAnswer = null; //eslint-disable-line
       const tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
-      console.log('hello');
-      return bcrypt.hash(recoveryAnswer, HASH_ROUNDS)
-        .then((recoveryHash) => {
-          return new Account({
-            username,
-            tokenSeed,
-            passwordHash,
-            recoveryHash,
-          }).save();
-        });
-    });
+      return new Account({
+          username,
+          tokenSeed,
+          passwordHash,
+          recoveryHash,
+          isAdmin,
+          recoveryQuestion,
+        }).save();
+      });
 };

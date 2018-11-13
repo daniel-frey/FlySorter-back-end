@@ -20,11 +20,10 @@ module.exports = (request, response, next) => {
     return next(new HttpError(400, 'AUTH | invalid request'));
   }
   const token = request.headers.authorization.split('Bearer ')[1];
-
   if (!token) {
     return next(new HttpError(400, 'AUTH | invalid request'));
   }
-  return promisify(jsonWebToken.verify)(token, process.env.SECRET)
+  return promisify(jsonWebToken.verify)(token, process.env.APP_SECRET)
     .then((decryptedToken) => {
       return Account.findOne({ tokenSeed: decryptedToken.tokenSeed });
     })
