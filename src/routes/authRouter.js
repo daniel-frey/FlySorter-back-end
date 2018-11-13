@@ -20,7 +20,13 @@ authRouter.post('/signup', jsonParser, (request, response, next) => {
     logger.log(logger.INFO, '400 | invalid request');
     return response.sendStatus(400);
   }
-  return Account.create(request.body.username, request.body.password, request.body.recovery)
+  return Account.create(
+    request.body.username,
+    request.body.password,
+    request.body.recoveryQuestion,
+    request.body.recoveryAnswer,
+    request.body.isAdmin
+  )
     .then((account) => {
       delete request.body.password;
       logger.log(logger.INFO, 'AUTH | creating TOKEN');

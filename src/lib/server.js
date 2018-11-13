@@ -1,18 +1,16 @@
 'use strict';
 
-// !: = development note
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+const authRouter = require('../routes/authRouter');
 const logger = require('./logger');
 const loggerMiddleware = require('./logger-middleware');
-// const errorMiddleware = require('./error-middleware');
-
-// const authAccountRoutes = require('../routes/auth-router');
-// const armRoutes = require('../routes/arm-routes');
 
 const app = express();
+
+app.use(authRouter);
 
 // GLOBAL MIDDLEWARE
 app.use(cors({
@@ -21,15 +19,11 @@ app.use(cors({
 
 // middleware
 app.use(loggerMiddleware);
-// app.use(authAccountRoutes);
 
 app.all('*', (request, response) => {
   logger.log(logger.INFO, '404 - catch-all/default routes (routes was not found)');
   return response.sendStatus(404);
 });
-
-// more middleware
-// app.use(errorMiddleware);
 
 const server = module.exports = {};
 let internalServer = null;
