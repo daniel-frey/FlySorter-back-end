@@ -24,7 +24,7 @@ authRouter.post('/signup', jsonParser, (request, response, next) => {
     request.body.password,
     request.body.recoveryQuestion,
     request.body.recoveryAnswer,
-    request.body.isAdmin
+    request.body.isAdmin,
   )
     .then((account) => {
       delete request.body.password;
