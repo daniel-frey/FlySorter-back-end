@@ -1,9 +1,10 @@
 'use strict';
 
-const HttpError = 'http-errors';
-const Account = '../model/account';
+const HttpError = require('http-errors');
+const Account = require('../model/account');
 
 module.exports = (request, response, next) => {
+  console.log(request.headers);
   if (!request.headers.authorization) {
     return next(new HttpError(400, 'AUTH | invalid request'));
   }
@@ -14,8 +15,6 @@ module.exports = (request, response, next) => {
   }
 
   const stringAuthHeader = Buffer.from(base64AuthHeader, 'base64').toString();
-
-
   const [username, password] = stringAuthHeader.split(':');
 
   if (!username || !password) {
@@ -27,7 +26,7 @@ module.exports = (request, response, next) => {
       if (!account) {
         return next(new HttpError(400, 'AUTH | invalid request'));
       }
-      return account.pVerifyPassword(password);
+      return account.pValidatePassword(password);
     })
     .then((account) => {
       request.account = account;

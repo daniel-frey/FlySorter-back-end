@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const HttpError = require('http-errors');
 
-const bearerAuthMiddleware = require('../lib/bearerAuthMiddleware');
+const basicAuthMiddleware = require('../lib/basicAuthMiddleware');
 const Account = require('../model/account');
 const logger = require('../lib/logger');
 
@@ -15,7 +15,6 @@ const authRouter = module.exports = new express.Router();
 // SIGN-UP
 // ==================================================================
 authRouter.post('/signup', jsonParser, (request, response, next) => {
-  logger.log(logger.INFO, 'wassup');
   if (!request.body.username) {
     logger.log(logger.INFO, '400 | invalid request');
     return response.sendStatus(400);
@@ -42,7 +41,7 @@ authRouter.post('/signup', jsonParser, (request, response, next) => {
 // ==================================================================
 // LOGIN
 // ==================================================================
-authRouter.get('/login', bearerAuthMiddleware, (request, response, next) => {
+authRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
   if (!request.account) {
     return next(new HttpError(401, 'AUTH | invalid request'));
   }
