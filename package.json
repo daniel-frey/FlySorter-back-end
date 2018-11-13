@@ -35,15 +35,16 @@
   "devDependencies": {
     "bcrypt": "^3.0.2",
     "cors": "^2.8.5",
-    "jsonwebtoken": "^8.3.0",
-    "logger": "0.0.1",
-    "mongoose": "^5.3.10",
-    "winston": "^3.1.0",
-    "superagent": "^4.0.0-beta.5",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.22.0",
-    "jest": "^23.6.0"
+    "faker": "^4.1.0",
+    "jest": "^23.6.0",
+    "jsonwebtoken": "^8.3.0",
+    "logger": "0.0.1",
+    "mongoose": "^5.3.10",
+    "superagent": "^4.0.0-beta.5",
+    "winston": "^3.1.0"
   }
 }

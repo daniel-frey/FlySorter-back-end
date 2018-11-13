@@ -88,12 +88,12 @@ Account.create = (username, password, recoveryQuestion, recoveryAnswer, isAdmin 
       recoveryAnswer = null; //eslint-disable-line
       const tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
       return new Account({
-          username,
-          tokenSeed,
-          passwordHash,
-          recoveryHash,
-          isAdmin,
-          recoveryQuestion,
-        }).save();
-      });
+        username,
+        tokenSeed,
+        passwordHash,
+        recoveryHash,
+        isAdmin,
+        recoveryQuestion,
+      }).save();
+    });
 };
