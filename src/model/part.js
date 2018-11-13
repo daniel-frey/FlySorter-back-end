@@ -53,4 +53,32 @@ const partSchema = mongoose.Schema({
 
 const Part = module.exports = mongoose.model('part', partSchema);
 
-Part.create = ()
+Part.create = (
+  partId,
+  partDescription,
+  partSub,
+  partSrc,
+  partMfgNum,
+  partPrice,
+  partCategory,
+  partLocation,
+  partCount,
+  partLongLead,
+  partNotes,
+  subAssembly,
+) => {
+  return new Part({
+    partId,
+    partDescription,
+    partSub,
+    partSrc,
+    partMfgNum,
+    partPrice,
+    partCategory,
+    partLocation,
+    partCount,
+    partLongLead,
+    partNotes,
+    subAssembly,
+  }).save();
+};
