@@ -52,3 +52,5 @@ const partSchema = mongoose.Schema({
 });
 
 const Part = module.exports = mongoose.model('part', partSchema);
+
+Part.create = ()
