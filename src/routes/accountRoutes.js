@@ -11,9 +11,34 @@ const logger = require('../lib/logger');
 const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
 
-router.get('/accounts', bearerAuthMiddleware, jsonParser, (request, response, next) => {
-  if (!request.account) {
-    return next(new HttpError(400, 'bad request'));
-  }
-  response.send('get request to the accounts page');
+const dbQuery = require('../lib/query');
+
+const runUserQuery = (callback) => {
+  const findStuff = dbQuery.find(Account, 'username recoveryQuestion isAdmin');
+  // run async query
+  const returnData = dbQuery.query(findStuff, function (data, error) { //eslint-disable-line
+    if (error) {
+      return error;
+    }
+    if (data) {
+      // convert accessCodes into iterable array
+      return callback(Object.values(data));
+    }
+  });
+};
+
+// bearerAuthMiddleware, jsonParser, (request, response, next)
+// NOTE: need additional validation to ensure only admin can do this...
+router.get('/accounts', jsonParser, (request, response, next) => {
+  // return all users in db
+  var query = runUserQuery(function(callback, error) {
+    // console.log('error');
+    // console.log(error);
+    // console.log('callback');
+    // console.log(callback);
+    return response.json({dbQuery: callback});
+  });
+  // needs additional error handling but commit this base query for now
+  // front end should be able to receive this json and populate user list with
+  // the delete buttons
 });
