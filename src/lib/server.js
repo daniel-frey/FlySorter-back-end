@@ -8,11 +8,13 @@ const accountRouter = require('../routes/accountRoutes');
 const logger = require('./logger');
 const loggerMiddleware = require('./logger-middleware');
 const errorMiddleware = require('./error-middleware');
+const subAssemblyRouter = require('../routes/subAssembly-routes');
 
 const app = express();
 
 app.use(authRouter);
 app.use(accountRouter);
+app.use(subAssemblyRouter);
 
 // GLOBAL MIDDLEWARE
 app.use(cors({

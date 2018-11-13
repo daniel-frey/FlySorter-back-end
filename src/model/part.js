@@ -65,7 +65,6 @@ Part.create = (
   partCount,
   partLongLead,
   partNotes,
-  subAssembly,
 ) => {
   return new Part({
     partId,
@@ -79,6 +78,5 @@ Part.create = (
     partCount,
     partLongLead,
     partNotes,
-    subAssembly,
   }).save();
 };
