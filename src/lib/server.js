@@ -11,13 +11,14 @@ const errorMiddleware = require('./error-middleware');
 
 const app = express();
 
+app.use(cors({
+  credential: true,
+}));
+
 app.use(authRouter);
 app.use(accountRouter);
 
 // GLOBAL MIDDLEWARE
-app.use(cors({
-  credential: true,
-}));
 
 // middleware
 app.use(loggerMiddleware);
