@@ -9,12 +9,12 @@ const Account = require('../model/account');
 const logger = require('../lib/logger');
 
 const jsonParser = bodyParser.json();
-const authRouter = module.exports = new express.Router();
+const router = module.exports = new express.Router();
 
 // ==================================================================
 // SIGN-UP
 // ==================================================================
-authRouter.post('/signup', jsonParser, (request, response, next) => {
+router.post('/signup', jsonParser, (request, response, next) => {
   if (!request.body.username) {
     logger.log(logger.INFO, '400 | invalid request');
     return response.sendStatus(400);
@@ -41,16 +41,15 @@ authRouter.post('/signup', jsonParser, (request, response, next) => {
 // ==================================================================
 // LOGIN
 // ==================================================================
-authRouter.get('/login', basicAuthMiddleware, (request, response, next) => {
+router.get('/login', basicAuthMiddleware, (request, response, next) => {
   if (!request.account) {
     return next(new HttpError(401, 'AUTH | invalid request'));
   }
   return request.account.pCreateToken()
     .then((token) => {
+      logger.log(logger.INFO, token);
       logger.log(logger.INFO, 'Responding with a 200 status code and a TOKEN');
       return response.json({ token });
     })
     .catch(next);
 });
-
-module.exports = authRouter;
