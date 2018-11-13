@@ -1,3 +1,0 @@
-// SIGNUP
-echo '{"username":"username00","password":"password","recoveryAnswer":"answer","isAdmin":"false"}' | http http://localhost:3000/signup
-echo '{"username":"kris0579","password":"password"}' | http http://localhost:3000/login

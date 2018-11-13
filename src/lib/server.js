@@ -1,12 +1,12 @@
 'use strict';
 
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const authRouter = require('../routes/authRouter');
 const logger = require('./logger');
 const loggerMiddleware = require('./logger-middleware');
+const errorMiddleware = require('./error-middleware');
 
 const app = express();
 
