@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const authRouter = require('../routes/authRouter');
+const accountRouter = require('../routes/accountRoutes');
 const logger = require('./logger');
 const loggerMiddleware = require('./logger-middleware');
 const errorMiddleware = require('./error-middleware');
@@ -11,6 +12,7 @@ const errorMiddleware = require('./error-middleware');
 const app = express();
 
 app.use(authRouter);
+app.use(accountRouter);
 
 // GLOBAL MIDDLEWARE
 app.use(cors({
