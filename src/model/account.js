@@ -1,10 +1,5 @@
 'use strict';
 
-// =======================================================
-// Tom: Left out email in account schema, not sure if needed. Maybe if password needs
-// to be reset. Also, are we doing account hierarchy?
-// =======================================================
-
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jsonWebToken = require('jsonwebtoken');
