@@ -2,8 +2,9 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
-const jsonParser = bodyParser.json();
 const Part = require('../model/part');
+
+const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
 const logger = require('../lib/logger');
 
