@@ -31,12 +31,12 @@ const runUserQuery = (callback) => {
 // NOTE: need additional validation to ensure only admin can do this...
 router.get('/accounts', jsonParser, (request, response, next) => {
   // return all users in db
-  var query = runUserQuery(function(callback, error) {
+  let query = runUserQuery((callback, error) => {
     // console.log('error');
     // console.log(error);
     // console.log('callback');
     // console.log(callback);
-    return response.json({dbQuery: callback});
+    return response.json({ dbQuery: callback });
   });
   // needs additional error handling but commit this base query for now
   // front end should be able to receive this json and populate user list with

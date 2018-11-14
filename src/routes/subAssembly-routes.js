@@ -2,10 +2,11 @@
 
 const bodyParser = require('body-parser');
 const express = require('express');
-const jsonParser = bodyParser.json();
 const SubAssembly = require('../model/sub-assembly');
-const router = module.exports = new express.Router();
 const logger = require('../lib/logger');
+
+const jsonParser = bodyParser.json();
+const router = module.exports = new express.Router();
 
 // ==========================================================================
 // CREATE Sub-Assembly
