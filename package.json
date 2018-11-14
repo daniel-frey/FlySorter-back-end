@@ -27,22 +27,22 @@
   },
   "homepage": "https://github.com/fncreative/FlySorter-back-end#readme",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "http-errors": "^1.7.1",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.10"
   },
   "devDependencies": {
-    "bcrypt": "^3.0.2",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.22.0",
     "faker": "^4.1.0",
     "jest": "^23.6.0",
-    "jsonwebtoken": "^8.3.0",
     "logger": "0.0.1",
     "superagent": "^4.0.0-beta.5",
     "winston": "^3.1.0"
