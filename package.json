@@ -28,13 +28,13 @@
   "homepage": "https://github.com/fncreative/FlySorter-back-end#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "http-errors": "^1.7.1"
   },
   "devDependencies": {
     "bcrypt": "^3.0.2",
-    "cors": "^2.8.5",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
