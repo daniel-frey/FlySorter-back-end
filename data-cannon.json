@@ -4,14 +4,10 @@
     "phases": [
       {
         "duration": 10,
-        "arrivalRate": 50
-      },
-      {
-        "duration": 30,
-        "arrivalRate": 200
+        "arrivalRate": 1
       }
     ],
-    "processor" : "./load-test-create-user.js"
+    "processor" : "./data-cannon.js"
   },
   "scenarios": [
     {
@@ -22,24 +18,33 @@
         },
         {
           "post": {
-            "url": "/user/signup",
+            "url": "/subassemblies",
             "json": {
-              "username": "{{ username }}",
-              "email": "{{ email }}",
-              "password": "{{ password }}",
-              "accesscode": "{{ accesscode }}"
-            },
-            "capture": {
-              "json": "$.token",
-              "as": "token"
+              "subId": "{{ subId }}",
+              "subPart": "{{ subPart }}",
+              "subVersion": "{{ subVersion }}",
+              "subQuantity": "{{ subQuantity }}",
+              "subMinutes": "{{ subMinutes }}",
+              "parts": "{{ parts }}"
             }
           }
-        }
-      ,{
-          "get": {
-            "url": "/user/auth/login",
-            "headers": {
-              "Authorization": "Bearer {{ token }}"
+        },
+        {
+          "post": {
+            "url": "/parts",
+            "json": {
+              "partId": "{{ partId }}",
+              "partDescription": "{{ partDescription }}",
+              "partSub": "{{ partSub }}",
+              "partSrc": "{{ partSrc }}",
+              "partMfgNum": "{{ partMfgNum }}",
+              "partPrice": "{{ partPrice }}",
+              "partCategory": "{{ partCategory }}",
+              "partLocation": "{{ partLocation }}",
+              "partCount": "{{ partCount }}",
+              "partLongLead": "{{ partLongLead }}",
+              "partNotes": "{{ partNotes }}",
+              "subAssembly": "{{ subAssembly }}"
             }
           }
         }
