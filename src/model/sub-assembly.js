@@ -33,11 +33,11 @@ const subAssemblySchema = mongoose.Schema({
   usePushEach: true,
 });
 
-const subAssembly = module.exports = mongoose.model('subAssembly', subAssemblySchema);
+const SubAssembly = module.exports = mongoose.model('subAssembly', subAssemblySchema);
 
-subAssembly.create = (subId, subPart, subVersion, subQuantity, subMinutes) => {
+SubAssembly.create = (subId, subPart, subVersion, subQuantity, subMinutes) => {
   console.log(subId);
-  return new subAssembly({
+  return new SubAssembly({
     subId,
     subPart,
     subVersion,

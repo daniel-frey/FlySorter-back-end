@@ -3,7 +3,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const jsonParser = bodyParser.json();
-const subAssembly = require('../model/sub-assembly');
+const SubAssembly = require('../model/sub-assembly');
 const router = module.exports = new express.Router();
 const logger = require('../lib/logger');
 
@@ -15,7 +15,7 @@ router.post('/subassemblies', jsonParser, (request, response, next) => {
     logger.log(logger.INFO, '400 | invalid request');
     return response.sendStatus(400);
   }
-  return subAssembly.create(
+  return SubAssembly.create(
     request.body.subId,
     request.body.subPart,
     request.body.subVersion,
@@ -23,7 +23,7 @@ router.post('/subassemblies', jsonParser, (request, response, next) => {
     request.body.subMinutes,
   )
     .then((subAssembly) => {
-      logger.log(logger.INFO, 'SUCCESS - Creating sub-assembly', subAssembly);
+      logger.log(logger.INFO, 'SUCCESS - Creating Sub-Assembly', subAssembly);
     })
     .catch(next);
 });
