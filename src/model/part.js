@@ -53,43 +53,14 @@ const partSchema = mongoose.Schema({
   },
 });
 
-// Part.create = (
-//   partId,
-//   partDescription,
-//   partSub,
-//   partSrc,
-//   partMfgNum,
-//   partPrice,
-//   partCategory,
-//   partLocation,
-//   partCount,
-//   partLongLead,
-//   partNotes,
-//   subAssembly,
-// ) => {
-//   return new Part({
-//     partId,
-//     partDescription,
-//     partSub,
-//     partSrc,
-//     partMfgNum,
-//     partPrice,
-//     partCategory,
-//     partLocation,
-//     partCount,
-//     partLongLead,
-//     partNotes,
-//     subAssembly,
-//   }).save();
-// };
-
 function partPreHook(done) {
   return SubAssembly.findById(this.subAssembly)
     .then((subAssemblyFound) => {
       if (!subAssemblyFound) {
         throw new HttpError(404, 'No existing subAssembly');
       }
-      subAssemblyFound.parts.push(this._id);
+      console.log(this);
+      subAssemblyFound.parts.push(this);
       return subAssemblyFound.save();
     })
     .then(() => done())
