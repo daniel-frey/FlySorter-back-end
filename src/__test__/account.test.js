@@ -6,6 +6,9 @@ const superagent = require('superagent');
 const accountMock = require('./lib/account-mock');
 const server = require('../lib/server');
 
+const SECRET = 'Grr69NbuX9C1nnYtDd5h7L98xxQwldu73j46mC';//eslint-disable-line
+const MONGODB_URI = 'mongodb://localhost/testdb';//eslint-disable-line
+const PORT = 3000; //eslint-disable-line
 const API_URL = `http://localhost:${process.env.PORT}`;
 
 describe('Testing account signup and login', () => {
@@ -27,7 +30,7 @@ describe('Testing account signup and login', () => {
       });
   });
 
-  test('Should return a 400 code if there is no body or incorrect body', () => {
+  test('Should return a 400 status code if there is no body or incorrect body', () => {
     return superagent.post(`${API_URL}/signup`)
       .send({
         incorrectBody: '',
@@ -38,7 +41,7 @@ describe('Testing account signup and login', () => {
       });
   });
 
-  test('Should return a 404 if the route cannot be found', () => {
+  test('Should return a 404 status code if the route cannot be found', () => {
     return superagent.post(`${API_URL}/thiswontwork`)
       .send({
         username: faker.lorem.words(1),
