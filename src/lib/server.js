@@ -11,6 +11,7 @@ const errorMiddleware = require('./error-middleware');
 const subAssemblyRouter = require('../routes/subAssembly-routes');
 const partRouter = require('../routes/part-routes');
 const sendSubAssyRoutes = require('../routes/sendSubAssyRouter');
+const partQuery = require('../routes/part-query');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(accountRouter);
 app.use(subAssemblyRouter);
 app.use(sendSubAssyRoutes);
 app.use(partRouter);
+app.use(partQuery);
 
 // GLOBAL MIDDLEWARE
 
