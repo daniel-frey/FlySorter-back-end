@@ -1,8 +1,8 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const SubAssembly = require('./sub-assembly');
 const HttpError = require('http-errors');
+const SubAssembly = require('./sub-assembly');
 
 const partSchema = mongoose.Schema({
   partId: {
@@ -77,8 +77,8 @@ const partPostHook = (document, done) => {
       });
       return subAssemblyFound.save();
     })
-      .then(() => done())
-      .catch(done);
+    .then(() => done())
+    .catch(done);
 };
 
 partSchema.pre('save', partPreHook);

@@ -2,11 +2,9 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const HttpError = require('http-errors');
 
-const bearerAuthMiddleware = require('../lib/bearerAuthMiddleware');
+// const bearerAuthMiddleware = require('../lib/bearerAuthMiddleware');
 const Account = require('../model/account');
-const logger = require('../lib/logger');
 
 const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
@@ -29,9 +27,9 @@ const runUserQuery = (callback) => {
 
 // bearerAuthMiddleware, jsonParser, (request, response, next)
 // NOTE: need additional validation to ensure only admin can do this...
-router.get('/accounts', jsonParser, (request, response, next) => {
+router.get('/accounts', jsonParser, (request, response, next) => { // eslint-disable-line
   // return all users in db
-  let query = runUserQuery((callback, error) => {
+  let query = runUserQuery((callback, error) => { // eslint-disable-line
     // console.log('error');
     // console.log(error);
     // console.log('callback');

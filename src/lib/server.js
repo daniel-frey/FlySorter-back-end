@@ -30,7 +30,7 @@ app.use(partQuery);
 
 // middleware
 app.use(loggerMiddleware);
-
+app.use(errorMiddleware);
 app.all('*', (request, response) => {
   logger.log(logger.INFO, '404 - catch-all/default routes (routes was not found)');
   return response.sendStatus(404);
