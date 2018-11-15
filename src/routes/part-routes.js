@@ -31,7 +31,12 @@ router.post('/parts', jsonParser, (request, response, next) => {
     request.body.subAssembly,
   )
     .then((part) => {
-      return logger.log(logger.INFO, 'SUCCESS - Creating sub-assembly', part);
+      logger.log(logger.INFO, 'SUCCESS - Creating part', part);
+      response.json(part);
     })
     .catch(next);
 });
+
+// ==========================================================================
+// VIEW Parts
+// ==========================================================================
