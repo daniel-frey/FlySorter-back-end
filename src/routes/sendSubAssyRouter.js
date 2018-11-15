@@ -2,11 +2,11 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const HttpError = require('http-errors');
+// const HttpError = require('http-errors');
 
-const bearerAuthMiddleware = require('../lib/bearerAuthMiddleware');
+// const bearerAuthMiddleware = require('../lib/bearerAuthMiddleware');
 const SubAssy = require('../model/sub-assembly');
-const logger = require('../lib/logger');
+// const logger = require('../lib/logger');
 
 const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
@@ -27,9 +27,9 @@ const runAssyQuery = (callback) => {
   });
 };
 
-router.get('/subassy', jsonParser, (request, response, next) => {
+router.get('/subassy', jsonParser, (request, response, next) => { //eslint-disable-line
   // return all users in db
-  let query = runAssyQuery((callback, error) => {
+  let query = runAssyQuery((callback, error) => { //eslint-disable-line
     return response.json({ dbQuery: callback });
   });
   // needs additional error handling but commit this base query for now

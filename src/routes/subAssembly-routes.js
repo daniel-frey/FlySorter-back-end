@@ -25,7 +25,7 @@ router.post('/subassemblies', jsonParser, (request, response, next) => {
   )
     .then((subAssembly) => {
       logger.log(logger.INFO, 'SUCCESS - Creating Sub-Assembly', subAssembly);
-      return response.json({subAssembly});
+      return response.json({ subAssembly });
     })
     .catch(next);
 });
@@ -33,10 +33,10 @@ router.post('/subassemblies', jsonParser, (request, response, next) => {
 // ==========================================================================
 // VIEW Sub-Assembly
 // ==========================================================================
-router.get('/subassemblies', jsonParser, (request, response, next) => {
-  return SubAssembly.find({}, function(error, subassemblies) {
-    let subassembliesMap = {};
-    subassemblies.forEach(function(sa) {
+router.get('/subassemblies', jsonParser, (request, response, next) => { // eslint-disable-line
+  return SubAssembly.find({}, (error, subassemblies) => {
+    const subassembliesMap = {};
+    subassemblies.forEach((sa) => {
       subassembliesMap[sa._id] = sa;
     });
     response.send(subassembliesMap);
