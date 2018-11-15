@@ -25,6 +25,7 @@ router.post('/subassemblies', jsonParser, (request, response, next) => {
   )
     .then((subAssembly) => {
       logger.log(logger.INFO, 'SUCCESS - Creating Sub-Assembly', subAssembly);
+      return response.json({subAssembly});
     })
     .catch(next);
 });
