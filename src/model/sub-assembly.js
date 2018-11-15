@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-
 const subAssemblySchema = mongoose.Schema({
   subId: {
     type: String,

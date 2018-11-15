@@ -10,6 +10,7 @@ const loggerMiddleware = require('./logger-middleware');
 const errorMiddleware = require('./error-middleware');
 const subAssemblyRouter = require('../routes/subAssembly-routes');
 const partRouter = require('../routes/part-routes');
+const sendAssyRouter = require('../routes/sendAssyRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cors({
 app.use(authRouter);
 app.use(accountRouter);
 app.use(subAssemblyRouter);
+app.use(sendAssyRouter);
 app.use(partRouter);
 
 // GLOBAL MIDDLEWARE
