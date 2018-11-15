@@ -13,4 +13,4 @@ artillery quick --count 10 -n 20 http://localhost:3000/parts
 
 echo | http http://localhost:3000/subassemblies
 
-echo '{"partId":"vjfdghfdjhgwsvhds","partDescription":"password","partSub":"false","partSrc":"answer","partMfgNum":"ok","partPrice":"buhbyeee","partCategory":"nahhhhhh","partLocation":"cya","partCount":"bye","partLongLead":"false","partNotes":"wee","subAssembly":"5beb4e81541a6a1c27e1fc27"}' | http http://localhost:3000/parts
+echo '{"partId":"hdsjdfsjhvdsjhdsf","partDescription":"password","partSub":"false","partSrc":"answer","partMfgNum":"ok","partPrice":"buhbyeee","partCategory":"nahhhhhh","partLocation":"cya","partCount":"bye","partLongLead":"false","partNotes":"wee","subAssembly":"5beb4e81541a6a1c27e1fc27"}' | http http://localhost:3000/parts

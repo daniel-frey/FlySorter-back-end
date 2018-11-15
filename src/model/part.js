@@ -53,38 +53,35 @@ const partSchema = mongoose.Schema({
   },
 });
 
-const Part = module.exports = mongoose.model('part', partSchema);
-
-
-Part.create = (
-  partId,
-  partDescription,
-  partSub,
-  partSrc,
-  partMfgNum,
-  partPrice,
-  partCategory,
-  partLocation,
-  partCount,
-  partLongLead,
-  partNotes,
-  subAssembly,
-) => {
-  return new Part({
-    partId,
-    partDescription,
-    partSub,
-    partSrc,
-    partMfgNum,
-    partPrice,
-    partCategory,
-    partLocation,
-    partCount,
-    partLongLead,
-    partNotes,
-    subAssembly,
-  }).save();
-};
+// Part.create = (
+//   partId,
+//   partDescription,
+//   partSub,
+//   partSrc,
+//   partMfgNum,
+//   partPrice,
+//   partCategory,
+//   partLocation,
+//   partCount,
+//   partLongLead,
+//   partNotes,
+//   subAssembly,
+// ) => {
+//   return new Part({
+//     partId,
+//     partDescription,
+//     partSub,
+//     partSrc,
+//     partMfgNum,
+//     partPrice,
+//     partCategory,
+//     partLocation,
+//     partCount,
+//     partLongLead,
+//     partNotes,
+//     subAssembly,
+//   }).save();
+// };
 
 function partPreHook(done) {
   return SubAssembly.findById(this.subAssembly)
@@ -116,3 +113,5 @@ const partPostHook = (document, done) => {
 
 partSchema.pre('save', partPreHook);
 partSchema.post('remove', partPostHook);
+
+module.exports = mongoose.model('part', partSchema);
