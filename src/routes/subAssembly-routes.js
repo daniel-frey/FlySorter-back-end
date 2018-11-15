@@ -28,3 +28,16 @@ router.post('/subassemblies', jsonParser, (request, response, next) => {
     })
     .catch(next);
 });
+
+// ==========================================================================
+// VIEW Sub-Assembly
+// ==========================================================================
+router.get('/subassemblies', jsonParser, (request, response, next) => {
+  return SubAssembly.find({}, function(error, subassemblies) {
+    let subassembliesMap = {};
+    subassemblies.forEach(function(sa) {
+      subassembliesMap[sa._id] = sa;
+    });
+    response.send(subassembliesMap);
+  });
+});

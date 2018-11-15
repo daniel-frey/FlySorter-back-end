@@ -16,22 +16,14 @@ router.post('/parts', jsonParser, (request, response, next) => {
     logger.log(logger.INFO, '400 | invalid request');
     return response.sendStatus(400);
   }
-  return Part.create(
-    request.body.partId,
-    request.body.partDescription,
-    request.body.partSub,
-    request.body.partSrc,
-    request.body.partMfgNum,
-    request.body.partPrice,
-    request.body.partCategory,
-    request.body.partLocation,
-    request.body.partCount,
-    request.body.partLongLead,
-    request.body.partNotes,
-    request.body.subAssembly,
-  )
+  return new Part(request.body).save()
     .then((part) => {
-      return logger.log(logger.INFO, 'SUCCESS - Creating sub-assembly', part);
+      logger.log(logger.INFO, 'Responding with a 200 status code');
+      response.json(part);
     })
-    .catch(next);
+    .catch(error => next(error));
 });
+
+// ==========================================================================
+// VIEW Parts
+// ==========================================================================
