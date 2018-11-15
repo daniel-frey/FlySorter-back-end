@@ -10,10 +10,11 @@ accountMock.pCreateMock = () => {
   mock.request = {
     username: faker.internet.userName(),
     password: faker.internet.password(),
-    recovery: faker.internet.text(5),
+    recoveryQuestion: faker.internet.text(5),
+    isAdmin: false,
   };
 
-  return Account.create(mock.request.username, mock.request.password, mock.request.recovery)
+  return Account.create(mock.request.username, mock.request.password, mock.request.recoveryQuestion, mock.request.isAdmin)
     .then((createdAccount) => {
       mock.account = createdAccount;
       return createdAccount.pCreateToken();

@@ -2,11 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const HttpError = require('http-errors');
-
-const bearerAuthMiddleware = require('../lib/bearerAuthMiddleware');
 const SubAssy = require('../model/sub-assembly');
-const logger = require('../lib/logger');
 
 const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
