@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+
 const subAssemblySchema = mongoose.Schema({
   subId: {
     type: String,
@@ -23,7 +24,7 @@ const subAssemblySchema = mongoose.Schema({
   // TOM: This connects the subAssembly to the Parts
   parts: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.Array,
       ref: 'part',
     },
   ],
