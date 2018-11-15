@@ -27,7 +27,7 @@ const runAssyQuery = (callback) => {
   });
 };
 
-router.get('/assy', jsonParser, (request, response, next) => {
+router.get('/subassy', jsonParser, (request, response, next) => {
   // return all users in db
   let query = runAssyQuery((callback, error) => {
     return response.json({ dbQuery: callback });
