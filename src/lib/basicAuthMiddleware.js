@@ -4,7 +4,6 @@ const HttpError = require('http-errors');
 const Account = require('../model/account');
 
 module.exports = (request, response, next) => {
-  console.log(request.headers);
   if (!request.headers.authorization) {
     return next(new HttpError(400, 'AUTH | invalid request'));
   }

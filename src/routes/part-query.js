@@ -11,18 +11,18 @@ const router = module.exports = new express.Router();
 const runPartQuery = (callback) => {
   const findPart = dbQuery.find(
     Part,
-    'partId' +
-    ' partDescription ' +
-    'partSub ' +
-    'partSrc ' +
-    'partMfgNum ' +
-    'partPrice ' +
-    'partCategory ' +
-    'partLocation ' +
-    'partCount ' +
-    'partLongLead ' +
-    'partNotes ' +
-    'subAssembly'
+    'partId'
+    + ' partDescription '
+    + 'partSub '
+    + 'partSrc '
+    + 'partMfgNum '
+    + 'partPrice '
+    + 'partCategory '
+    + 'partLocation '
+    + 'partCount '
+    + 'partLongLead '
+    + 'partNotes '
+    + 'subAssembly',
   );
   const returnData = dbQuery.query(findPart, function (data, error) { //eslint-disable-line
     if (error) {

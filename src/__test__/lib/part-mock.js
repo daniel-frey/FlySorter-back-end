@@ -15,7 +15,7 @@ partMock.pCreatePartMock = () => {
       resultMock.subAssembly = createdSubAssemblyMock;
 
       return new Part({
-        partId: faker.lorem.words(5), // eslint-disable-line
+        partId: Math.random().toString(),
         partDescription: faker.lorem.words(5),
         partSub: true,
         partSrc: faker.lorem.words(2),
@@ -26,7 +26,7 @@ partMock.pCreatePartMock = () => {
         partCount: Math.random().toString(),
         partLongLead: false,
         partNotes: faker.lorem.words(3),
-        subAssembly: '5beb5a73c8a0232118d33821',
+        subAssembly: createdSubAssemblyMock._id,
       }).save();
     })
     .then((createdPartMock) => {
