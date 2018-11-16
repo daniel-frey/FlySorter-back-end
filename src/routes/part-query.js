@@ -34,8 +34,8 @@ const runPartQuery = (callback) => {
   });
 };
 
-router.get('/parts', jsonParser, (request, response, next) => {
-  let query = runPartQuery((callback, error) => {
+router.get('/parts', jsonParser, (request, response, next) => { //eslint-disable-line
+  let query = runPartQuery((callback, error) => { //eslint-disable-line
     return response.json({ dbQuery: callback });
   });
 });
