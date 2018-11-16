@@ -11,18 +11,18 @@ const router = module.exports = new express.Router();
 const runPartQuery = (callback) => {
   const findPart = dbQuery.find(
     Part,
-    'partId' +
-    ' partDescription ' +
-    'partSub ' +
-    'partSrc ' +
-    'partMfgNum ' +
-    'partPrice ' +
-    'partCategory ' +
-    'partLocation ' +
-    'partCount ' +
-    'partLongLead ' +
-    'partNotes ' +
-    'subAssembly'
+    'partId'
+    + ' partDescription '
+    + 'partSub '
+    + 'partSrc '
+    + 'partMfgNum '
+    + 'partPrice '
+    + 'partCategory '
+    + 'partLocation '
+    + 'partCount '
+    + 'partLongLead '
+    + 'partNotes '
+    + 'subAssembly',
   );
   const returnData = dbQuery.query(findPart, function (data, error) { //eslint-disable-line
     if (error) {
@@ -34,8 +34,8 @@ const runPartQuery = (callback) => {
   });
 };
 
-router.get('/partquery', jsonParser, (request, response, next) => {
-  let query = runPartQuery((callback, error) => {
+router.get('/partquery', jsonParser, (request, response, next) => { //eslint-disable-line
+  const query = runPartQuery((callback, error) => { //eslint-disable-line
     return response.json({ dbQuery: callback });
   });
 });

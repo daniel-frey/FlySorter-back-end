@@ -1,3 +1,3 @@
-export const PORT = 6000;
-export const MONGODB_URI = 'mongodb://localhost/testdb';
-export const SECRET = 'Grr69NbuX9C1nnYtDd5h7L98xxQwldu73j46mC';
+process.env.PORT = 3000;
+process.env.MONGODB_URI = 'mongodb://localhost/testdb';
+process.env.APP_SECRET = 'Grr69NbuX9C1nnYtDd5h7L98xxQwldu73j46mC';
