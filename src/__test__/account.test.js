@@ -42,7 +42,6 @@ describe('Testing account signup and login', () => {
     return superagent.post(`${API_URL}/thiswontwork`)
       .send({
         username: faker.lorem.words(1),
-        email: faker.internet.email(),
         password: faker.lorem.words(1),
         recoveryQuestion: faker.lorem.words(1),
         isAdmin: faker.random.boolean(),
@@ -74,6 +73,12 @@ describe('Testing account signup and login', () => {
       .then(Promise.reject)
       .catch((response) => {
         expect(response.status).toEqual(400);
+      });
+  });
+  test('Should return a response for a successful GET request', () => {
+    return superagent.get(`${API_URL}/accounts`)
+      .then((response) => {
+        expect(response).toBeTruthy();
       });
   });
 });
