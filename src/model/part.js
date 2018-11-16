@@ -45,6 +45,13 @@ const partSchema = mongoose.Schema({
   partNotes: {
     type: String,
   },
+  // BEN: This is for listing out associated parts on a sub assy.
+  //        Mongoose still links behind the scenes, but this is for
+  //        the customer.
+  subIDRef: {
+    type: String,
+    required: true,
+  },
   // TOM: This connects the parts to the subAssembly
   subAssembly: {
     type: mongoose.Schema.Types.ObjectId,
