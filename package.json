@@ -16,6 +16,11 @@
     "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
     "dbOff": "killall mongod"
   },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/__test__/lib/test.env.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fncreative/FlySorter-back-end.git"

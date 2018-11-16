@@ -1,4 +1,3 @@
-
 'use strict';
 
 const faker = require('faker');
@@ -6,9 +5,6 @@ const superagent = require('superagent');
 const accountMock = require('./lib/account-mock');
 const server = require('../lib/server');
 
-const SECRET = 'Grr69NbuX9C1nnYtDd5h7L98xxQwldu73j46mC';//eslint-disable-line
-const MONGODB_URI = 'mongodb://localhost/testdb';//eslint-disable-line
-const PORT = 3000; //eslint-disable-line
 const API_URL = `http://localhost:${process.env.PORT}`;
 
 describe('Testing account signup and login', () => {
@@ -19,9 +15,10 @@ describe('Testing account signup and login', () => {
   test('Should return a 200 status code and a token if the user signs up correctly', () => {
     return superagent.post(`${API_URL}/signup`)
       .send({
-        username: faker.lorem.words(1),
-        password: faker.lorem.words(1),
-        recoveryQuestion: faker.lorem.words(1),
+        username: faker.internet.userName(),
+        password: faker.internet.password(),
+        recoveryQuestion: faker.lorem.words(3),
+        recoveryAnswer: faker.lorem.words(1),
         isAdmin: faker.random.boolean(),
       })
       .then((response) => {
@@ -37,7 +34,7 @@ describe('Testing account signup and login', () => {
       })
       .then(Promise.reject)
       .catch((response) => {
-        expect(response.status).toEqual(401);
+        expect(response.status).toEqual(400);
       });
   });
 
@@ -59,7 +56,7 @@ describe('Testing account signup and login', () => {
   test('Should return a 200 status code and a token if the user is logged in correctly', () => {
     return accountMock.pCreateMock()
       .then((mock) => {
-        return superagent.get(`${API_URL}'/login`)
+        return superagent.get(`${API_URL}/login`)
           .auth(mock.request.username, mock.request.password);
       })
       .then((response) => {
@@ -72,7 +69,7 @@ describe('Testing account signup and login', () => {
     return accountMock.pCreateMock()
       .then((mock) => {
         return superagent.get(`${API_URL}/login`)
-          .auth(mock.request.incorrectUsername, mock.request.password);
+          .auth(mock.request.brah, mock.request.password);
       })
       .then(Promise.reject)
       .catch((response) => {
