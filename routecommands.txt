@@ -1,0 +1,14 @@
+// SIGNUP
+echo '{"username":"username01","password":"password","recoveryQuestion":"question","recoveryAnswer":"answer","isAdmin":"false"}' | http http://localhost:3000/signup
+echo '{"username":"kris0579","password":"password"}' | http http://localhost:3000/login
+
+http -a username00:password localhost:3000/login
+
+echo '{"subId":"2","subPart":"password","subVersion":"question","subQuantity":"answer","subMinutes":"ok"}' | http http://localhost:3000/subassemblies
+
+echo '{"partId":"1","partDescription":"password","partSub":"false","partSrc":"answer","partMfgNum":"ok","partPrice":"buhbyeee","partCategory":"nahhhhhh","partLocation":"cya","partCount":"bye","partLongLead":"false","partNotes":"wee","subAssembly":"5beb4e81541a6a1c27e1fc27"}' | http http://localhost:3000/parts
+
+
+
+
+echo '{"partId":"ifthisworksiwillsayhello2","partDescription":"password","partSub":"false","partSrc":"answer","partMfgNum":"ok","partPrice":"buhbyeee","partCategory":"nahhhhhh","partLocation":"cya","partCount":"bye","partLongLead":"false","partNotes":"wee","subAssembly":"5beb5b3ffb7e0721c9bdec99"}' | http http://localhost:3000/parts

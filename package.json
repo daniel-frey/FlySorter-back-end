@@ -16,6 +16,11 @@
     "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
     "dbOff": "killall mongod"
   },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/__test__/lib/test.env.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fncreative/FlySorter-back-end.git"
@@ -27,13 +32,25 @@
   },
   "homepage": "https://github.com/fncreative/FlySorter-back-end#readme",
   "dependencies": {
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4"
-  },
-  "devDependencies": {
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "logger": "0.0.1",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "http-errors": "^1.7.1",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.10",
     "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "artillery": "^1.6.0-25",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "faker": "^4.1.0",
+    "jest": "^23.6.0",
+    "logger": "0.0.1",
+    "superagent": "^4.0.0-beta.5"
   }
 }

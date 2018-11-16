@@ -1,54 +1,58 @@
 'use strict';
 
-// !: = development note
-
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+const authRouter = require('../routes/authRouter');
+const accountRouter = require('../routes/accountRoutes');
 const logger = require('./logger');
 const loggerMiddleware = require('./logger-middleware');
-// const errorMiddleware = require('./error-middleware');
-
-// const authAccountRoutes = require('../routes/auth-router');
-// const armRoutes = require('../routes/arm-route');
+const errorMiddleware = require('./error-middleware');
+const subAssemblyRouter = require('../routes/subAssembly-routes');
+const partRouter = require('../routes/part-routes');
+const sendSubAssyRoutes = require('../routes/sendSubAssyRouter');
+const partQuery = require('../routes/part-query');
 
 const app = express();
 
-// GLOBAL MIDDLEWARE
 app.use(cors({
   credential: true,
 }));
 
+app.use(authRouter);
+app.use(accountRouter);
+app.use(subAssemblyRouter);
+app.use(sendSubAssyRoutes);
+app.use(partRouter);
+app.use(partQuery);
+
+// GLOBAL MIDDLEWARE
+
 // middleware
 app.use(loggerMiddleware);
-// app.use(authAccountRoutes);
-
+app.use(errorMiddleware);
 app.all('*', (request, response) => {
-  logger.log(logger.INFO, '404 - catch-all/default route (route was not found)');
+  logger.log(logger.INFO, '404 - catch-all/default routes (routes was not found)');
   return response.sendStatus(404);
 });
-
-// more middleware
-// app.use(errorMiddleware);
 
 const server = module.exports = {};
 let internalServer = null;
 
 server.start = () => {
   return mongoose.connect(process.env.MONGODB_URI)
-      .then(() => {
+    .then(() => {
         return internalServer = app.listen(process.env.PORT, () => { // eslint-disable-line
-          logger.log(logger.INFO, `Server is on at PORT: ${process.env.PORT}`);
-        });
+        logger.log(logger.INFO, `Server is on at PORT: ${process.env.PORT}`);
       });
+    });
 };
 
 server.stop = () => {
   return mongoose.disconnect()
-      .then(() => {
-        return internalServer.close(() => {
-          logger.log(logger.INFO, 'The server is OFF.');
-        });
+    .then(() => {
+      return internalServer.close(() => {
+        logger.log(logger.INFO, 'The server is OFF.');
       });
+    });
 };
