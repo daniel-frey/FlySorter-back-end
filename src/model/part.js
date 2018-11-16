@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const HttpError = require('http-errors');
 const SubAssembly = require('./sub-assembly');
 
+const MASTER_PART_ID_COUNTER = module.exports = {
+  counter: 100000,
+};
+
 const partSchema = mongoose.Schema({
   partId: {
     type: String,
