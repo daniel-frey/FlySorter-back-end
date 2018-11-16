@@ -1,6 +1,7 @@
 'use strict';
 
 const faker = require('faker');
+const logger = require('logger');
 const Account = require('../../model/account');
 
 const accountMock = module.exports = {};
@@ -31,7 +32,7 @@ accountMock.pCreateMock = () => {
       return mock;
     })
     .catch((error) => {
-      console.error(error);
+      logger.log(logger.ERROR, error);
     });
 };
 
