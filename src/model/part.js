@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const HttpError = require('http-errors');
 const SubAssembly = require('./sub-assembly');
 
-const MASTER_PART_ID_COUNTER = module.exports = {
+const MASTER_PART_ID_COUNTER = module.exports = { // eslint-disable-line
   counter: 100000,
 };
 
