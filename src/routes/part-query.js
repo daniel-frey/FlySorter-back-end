@@ -10,9 +10,13 @@ const router = module.exports = new express.Router();
 
 const runPartQuery = (callback) => {
   const findPart = dbQuery.find(
+    // BEN
+    //     Note the spaces on all but the last element.
+    //     If space is not included, the query will break on that line.
+    //     No space is required on the last line...
     Part,
-    'partId'
-    + ' partDescription '
+    'partId '
+    + 'partDescription '
     + 'partSub '
     + 'partSrc '
     + 'partMfgNum '
@@ -22,6 +26,7 @@ const runPartQuery = (callback) => {
     + 'partCount '
     + 'partLongLead '
     + 'partNotes '
+    + 'subIDRef '
     + 'subAssembly',
   );
   const returnData = dbQuery.query(findPart, function (data, error) { //eslint-disable-line
