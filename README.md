@@ -24,6 +24,15 @@ The table also allows the user to filter parts and search for a part in order to
 11. Superagent
 12. Winston
 
+# Running the application
+
+- To run the application locally, follow these steps:
+1. Turn on the database by executing the ```npm run dbOn``` command in your terminal.
+2. In a new terminal window, start the server by entering the ```npm run start``` command in your terminal.
+     - If done correctly, the following message should appear in your terminal: 
+     
+        ```info: Server is on at PORT: <portNumber>```
+
 # Testing
 
 - Backend testing of this application is done via Jest testing, in order to test
