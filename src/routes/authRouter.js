@@ -47,7 +47,6 @@ router.get('/login', basicAuthMiddleware, (request, response, next) => {
   }
   return request.account.pCreateToken()
     .then((token) => {
-      logger.log(logger.INFO, token);
       logger.log(logger.INFO, 'Responding with a 200 status code and a TOKEN');
       return response.json({ token });
     })

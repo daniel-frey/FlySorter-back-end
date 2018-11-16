@@ -4,15 +4,12 @@ const mongoose = require('mongoose');
 const HttpError = require('http-errors');
 const SubAssembly = require('./sub-assembly');
 
-const MASTER_PART_ID_COUNTER = module.exports = {
-  counter: 100000,
-};
-
 const partSchema = mongoose.Schema({
   partId: {
-    type: String,
+    type: Number,
     unique: true,
     required: true,
+    min: [100000, 'Id must be a unique integer starting from 100000'],
   },
   partDescription: {
     type: String,
