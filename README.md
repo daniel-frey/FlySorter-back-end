@@ -7,7 +7,7 @@
 machines to sort fruit flies so they can be used for scientific research. This application keeps track of those machine assemblies, sub-assemblies, and the parts that belong to those
 sub assemblies. These components are displayed on the page and allows the user to click
 on a sub-assembly to reveal the parts that makeup that sub-assembly.
-The table also allows the user to filter parts and search for a part in order to make finding particular parts faster.
+The table also allows the user to filter parts and search for a part in order to make finding particular parts faster and easier for the user.
 
 # Languages, Technologies, Frameworks, & Libraries Used (backend)
 

@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const HttpError = require('http-errors');
 const SubAssembly = require('./sub-assembly');
 
+const MASTER_PART_ID_COUNTER = module.exports = {
+  counter: 100000,
+};
+
 const partSchema = mongoose.Schema({
   partId: {
     type: String,
@@ -44,6 +48,13 @@ const partSchema = mongoose.Schema({
   },
   partNotes: {
     type: String,
+  },
+  // BEN: This is for listing out associated parts on a sub assy.
+  //        Mongoose still links behind the scenes, but this is for
+  //        the customer.
+  subIDRef: {
+    type: String,
+    required: true,
   },
   // TOM: This connects the parts to the subAssembly
   subAssembly: {
